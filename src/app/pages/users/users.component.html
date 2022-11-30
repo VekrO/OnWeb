@@ -1,0 +1,79 @@
+<main class="container">
+
+    <app-card [title]="'Usuários'" [subtitle]="'Faça o gerenciamento dos usuários na plataforma.'"></app-card>
+    <br>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Cadastrar novo usuário
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <form (ngSubmit)="formSubmit()" [formGroup]="form" class="form">
+            <mat-form-field class="form-group" appearance="fill">
+                <mat-label>Nome completo</mat-label>
+                <input type="text" formControlName="nome" matInput>
+                <mat-error>O nome deve estar preenchido!</mat-error>
+            </mat-form-field>
+            <mat-form-field class="form-group" appearance="fill">
+                <mat-label>E-mail</mat-label>
+                <input type="email" formControlName="email" matInput>
+                <mat-error>O e-mail deve estar preenchido!</mat-error>
+            </mat-form-field>
+            <mat-form-field class="form-group" appearance="fill">
+                <mat-label>Telefone</mat-label>
+                <input type="text" id="tel" formControlName="telefone" (input)="handlePhone($event)" maxlength="15" matInput>
+                <mat-hint>(XX) XXXXX-XXXX</mat-hint>
+                <mat-error *ngIf="form.controls['telefone'].hasError('required')">O telefone deve estar preenchido!</mat-error>
+                <mat-error *ngIf="form.controls['telefone'].hasError('minlength')">O telefone está incorreto!</mat-error>
+            </mat-form-field>
+            <mat-form-field class="form-group" appearance="fill">
+                <mat-label>Data de Nascimento</mat-label>
+                <input matInput formControlName="data_nascimento" [matDatepicker]="picker">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-hint>DD/MM/YYYY</mat-hint>
+                <mat-error>Preencha a data corretamente!</mat-error>
+            </mat-form-field>
+            <mat-form-field class="form-group" appearance="fill">
+                <mat-label>CPF</mat-label>
+                <input type="text" (input)="handleCpfMask()" maxlength="14" formControlName="cpf" matInput>
+                <mat-hint>XXX.XXX.XXX-XX</mat-hint>
+                <mat-error *ngIf="form.controls['cpf'].hasError('required')">Preencha o CPF corretamente!</mat-error>
+                <mat-error *ngIf="form.controls['cpf'].hasError('minlength')">O CPF está inválido!</mat-error>
+            </mat-form-field>
+            <mat-form-field class="form-group" appearance="fill">
+                <mat-label>Gênero</mat-label>
+                <mat-select [(value)]="selected" formControlName="genero">
+                    <mat-option value="masculino">Masculino</mat-option>
+                    <mat-option value="feminino">Feminino</mat-option>
+                </mat-select>
+                <mat-error>Selecione um gênero!</mat-error>
+            </mat-form-field>
+            <button mat-raised-button class="button">Confirmar</button>
+            </form>
+    </mat-expansion-panel>
+    <br>
+    <mat-expansion-panel (opened)="getUser()" (closed)="resetUser()">
+        <mat-expansion-panel-header>
+            <mat-panel-title>Ver todos os usuários</mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-form-field class="form-group">
+            <mat-label class="mat-label">Pesquise por um usuário</mat-label>
+            <input type="text" matInput (input)="searchUser()" class="mat-search-input" [(ngModel)]="searchUsername">
+        </mat-form-field>
+        <mat-list>
+            <mat-list-item *ngFor="let user of users" class="mat-list-item">
+                <span>[{{ user.id }}] - {{ user.nome }} </span>
+                <div class="option">
+                    <a (click)="deleteUser(user.id)" class="button-remove">
+                        <mat-icon>close</mat-icon>
+                    </a>
+                    <a [routerLink]="['/users/update/', user.id]" class="button-edit">
+                        <mat-icon>edit</mat-icon>
+                    </a>
+                </div>
+            </mat-list-item>
+            <mat-error *ngIf="userNotFound">Nenhum usuário encontrado com o nome {{ searchUsername }}</mat-error>
+        </mat-list>
+    </mat-expansion-panel>
+</main>

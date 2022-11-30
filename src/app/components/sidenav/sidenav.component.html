@@ -1,0 +1,11 @@
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav class="sidenav mat-elevation-z4" fixedInViewport="true" mode="side" opened>
+        <mat-nav-list class="sidenav-list" >
+            <a [routerLink]="['']" mat-list-item>Início</a>
+            <a [routerLink]="['users']" mat-list-item>Usuários</a>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>

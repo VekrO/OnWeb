@@ -1,0 +1,80 @@
+.container{
+    padding: 15px;
+}
+.container .form{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.container .form button{
+    background-color: royalblue;
+    color: white;
+}
+.container .panel-header{
+    display: flex;
+    align-items: center;
+}
+.container .panel-header span{
+    margin-left: 15px;
+    line-height: 25px;
+}
+.mat-label{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.mat-label .mat-label-icon{
+    font-size: 20px;
+}
+.container .form-group{
+    width: 100%;
+}
+.container .mat-list-item{
+    margin-bottom: 10px;
+    background-color: whitesmoke;
+    border-radius: 10px;
+}
+.container .mat-list-item span{
+    width: 100%;
+}
+.container .option{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+.container .option a{
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
+}
+.container .option a:hover{
+    width: 40px;
+    height: 40px;
+}
+.container .option .button-remove{
+    background-color: crimson;
+    color: white;
+}
+.container .option .button-edit{
+    background-color: 	#ffa500;
+    text-decoration: none;
+    color: black;
+}
+@media (min-width: 1280px){
+    .container .form{
+        width: 100%;
+    }
+    .container .form .form-group{
+        width: 50%;
+    }
+    .container .form button{
+        width: 50%;
+    }
+}

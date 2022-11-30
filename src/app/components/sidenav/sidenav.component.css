@@ -1,0 +1,12 @@
+.sidenav-container .sidenav{
+    width: 250px;
+    background-color: royalblue;
+}
+.sidenav-container .sidenav .sidenav-list a{
+    color: white;
+}
+@media (max-width: 768px){
+    .sidenav-container .sidenav{
+        display: none;
+    }
+}

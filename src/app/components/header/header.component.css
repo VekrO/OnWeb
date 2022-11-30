@@ -1,0 +1,38 @@
+.container{
+    display: none;
+    background-color: royalblue;
+}
+.container .navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 15px;
+}
+.container .mat-title {
+    color: white;
+}
+.container .nav{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+.container .nav .nav-item .nav-link{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: gainsboro;
+}
+
+ul{
+    list-style-type: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+@media (max-width: 768px) {
+    .container{
+        display: flex;
+    }
+}

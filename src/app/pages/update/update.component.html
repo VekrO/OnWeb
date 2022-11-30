@@ -1,0 +1,45 @@
+<main class="container">
+
+    <app-card [title]="'Atualizar'" [subtitle]="'Aqui você pode atualizar os dados do usuário.'"></app-card>
+    <br>
+    <form [formGroup]="form" (ngSubmit)="formSubmit()" *ngIf="form" class="form">
+        <h1>Atualização de usuário</h1>
+        <mat-form-field class="form-group" appearance="fill">
+            <mat-label>Nome</mat-label>
+            <input matInput formControlName="nome" type="text">
+        </mat-form-field>
+        <mat-form-field class="form-group" appearance="fill">
+            <mat-label>E-mail</mat-label>
+            <input matInput formControlName="email" type="email">
+        </mat-form-field>
+        <mat-form-field class="form-group" appearance="fill">
+            <mat-label>Telefone</mat-label>
+            <input matInput formControlName="telefone" (input)="handlePhone($event)" maxlength="15" type="text">
+        </mat-form-field>
+        <mat-form-field class="form-group" appearance="fill">
+            <mat-label>Data de Nascimento</mat-label>
+            <input matInput formControlName="data_nascimento" [matDatepicker]="picker">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-hint>DD/MM/YYYY</mat-hint>
+            <mat-error>Preencha a data corretamente!</mat-error>
+        </mat-form-field>
+        <mat-form-field class="form-group" appearance="fill">
+            <mat-label>CPF</mat-label>
+            <input type="text" (input)="handleCpfMask()" maxlength="14" formControlName="cpf" matInput>
+            <mat-hint>XXX.XXX.XXX-XX</mat-hint>
+            <mat-error *ngIf="form.controls['cpf'].hasError('required')">Preencha o CPF corretamente!</mat-error>
+            <mat-error *ngIf="form.controls['cpf'].hasError('minlength')">O CPF está inválido!</mat-error>
+        </mat-form-field>
+        <mat-form-field class="form-group" appearance="fill">
+            <mat-label>Gênero</mat-label>
+            <mat-select [(value)]="selected" formControlName="genero">
+                <mat-option value="masculino">Masculino</mat-option>
+                <mat-option value="feminino">Feminino</mat-option>
+            </mat-select>
+            <mat-error>Selecione um gênero!</mat-error>
+        </mat-form-field>
+        <button mat-raised-button class="button">Confirmar</button>
+    </form>
+
+</main>

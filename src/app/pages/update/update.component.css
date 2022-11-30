@@ -1,0 +1,11 @@
+.container{
+    padding: 15px;
+}
+.container .form {
+    display: flex;
+    flex-direction: column;
+}
+.container .form button {
+    background-color: royalblue;
+    color: white;
+}
