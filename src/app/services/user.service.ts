@@ -13,23 +13,23 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   createUser(params: User): Observable<User>{
-    return this.http.post<User>('http://localhost:3000/users', params);
+    return this.http.post<User>('https://onwebapi-production.up.railway.app/users', params);
   }
 
   getUsers(): Observable<User>{
-    return this.http.get<User>('http://localhost:3000/users');
+    return this.http.get<User>('https://onwebapi-production.up.railway.app/users');
   }
 
   getUser(id: Number): Observable<any> {
-    return this.http.get<any>(`http://localhost:3000/users/${id}`)
+    return this.http.get<any>(`https://onwebapi-production.up.railway.app/users/${id}`)
   }
 
   updateUser(id: Number, params: User): Observable<any> {
-    return this.http.patch(`http://localhost:3000/users/${id}`, params);
+    return this.http.patch(`https://onwebapi-production.up.railway.app/users/${id}`, params);
   }
 
   deleteUser(id: string): Observable<any>{
-    return this.http.delete(`http://localhost:3000/users/${id}`);
+    return this.http.delete(`https://onwebapi-production.up.railway.app/users/${id}`);
   }
 
 }
